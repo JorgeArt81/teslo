@@ -1,0 +1,16 @@
+version: '3.6'
+
+services:
+  teslo_db:
+    container_name: teslo_db
+    image: 'postgres:14-alpine3.17'
+    ports:
+      - ${POSTGRES_PORT}:5432
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+      # - teslo-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    restart: always
